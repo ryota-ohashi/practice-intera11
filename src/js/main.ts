@@ -5,9 +5,12 @@ const sketch = (p: p5) => {
 
   interface Status {
     order: number,
+    wordIndex: number,
     letter: string,
     x: number,
-    y: number
+    y: number,
+    vx: number,
+    vy: number
   }
 
   let t = 0;
@@ -29,25 +32,29 @@ const sketch = (p: p5) => {
 
   p.setup = () => {
     p.createCanvas(p.windowWidth, p.windowHeight);
-    word.map((words, index) => {
-      splitWord(words).map((letter) => {
+    word.map((words, order) => {
+      splitWord(words).map((letter, index) => {
         // console.log(initPos(letter, index));
-        wordArray.push(initPos(letter, index));
+        wordArray.push(initPos(letter, order, index));
       });
     });
-    console.log(wordArray);
+    // console.log(wordArray);
 
   };
 
   p.draw = () => {
     t++;
-    p.clear;
+    p.clear(0,0,0,0);
     p.textSize(textSize);
     p.textFont(myFont);
     p.fill(0);
 
     wordArray.forEach(obj => {
-        p.text(obj.letter, obj.x, obj.y);
+      obj.x += obj.vx;
+      obj.y += obj.vy;
+      obj.vx = 2 * p.noise(obj.x / 100, obj.y / 100, t / 100) - 1;
+      obj.vy = 2 * p.noise(obj.x / 100, obj.y / 100, (t + 1000) / 100) - 1;
+      p.text(obj.letter, obj.x, obj.y);
     });
   };
 
@@ -55,12 +62,15 @@ const sketch = (p: p5) => {
     return word.split("");
   };
 
-  const initPos = (letter: string, index: number) => {
+  const initPos = (letter: string, order: number, wordIndex: number) => {
     const wordPos: Status = {
-      order: index,
+      order: order,
+      wordIndex: wordIndex,
       letter: letter,
-      x: p.random(p.windowWidth - textSize),
-      y: p.random(p.windowHeight - textSize)
+      x: p.random(p.windowWidth),
+      y: p.random(p.windowHeight),
+      vx: 0,
+      vy: 0
     };
     return wordPos;
   };
