@@ -1,4 +1,14 @@
 body{
   padding: 0;
   margin: 0;
+  overflow: hidden;
+}
+
+canvas{
+  background-image:
+    linear-gradient(0deg, transparent calc(100% - 1px), #f0f0f0 calc(100% - 1px)),
+    linear-gradient(90deg, transparent calc(100% - 1px), #f0f0f0 calc(100% - 1px));
+  background-size: 16px 16px;
+  background-repeat: repeat;
+  background-position: center center;
 }
