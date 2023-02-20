@@ -16,7 +16,7 @@ const sketch = (p: p5) => {
   let t = 0;
   let textSize = 24;
   let myFont: p5.Font;
-  let fontPath = "/fonts/YujiBoku-Regular.ttf";
+  let fontPath = "/assets/fonts/YujiBoku-Regular.ttf";
 
   const word = [
     "咳をしても一人",
