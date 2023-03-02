@@ -12,3 +12,26 @@ canvas{
   background-repeat: repeat;
   background-position: center center;
 }
+
+.cite{
+  position: fixed;
+  right: 0;
+  bottom: 10px;
+  display: flex;
+  &_btn{
+    writing-mode: vertical-rl;
+    width: 30px;
+    line-height: 1.2;
+    appearance: none;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    background-color: #ccc;
+    color: #000;
+    cursor: pointer;
+    position: relative;
+    &:before{
+      content: "";
+      position: absolute;
+    }
+  }
+}
