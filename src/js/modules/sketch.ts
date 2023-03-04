@@ -20,9 +20,11 @@ export const sketch = (p: p5) => {
   let fontPath = "/assets/fonts/YujiBoku-Regular.ttf";
 
   const word = [
-    "咳をしても一人",
-    "白い椿赤い椿と落ちにけり",
-    "さびしくて他人のお葬式へゆく"
+    "咳をしても一人　尾崎放哉",
+    "白い椿赤い椿と落ちにけり　河東碧梧桐",
+    "まっすぐな道でさびしい　種田山頭火",
+    "さびしくて他人のお葬式へゆく　石部明",
+    "月揺れて不意に疑う指の数　加藤久子"
   ];
   const wordLength: number = word.length;
   let currentNumber:number = -1;
@@ -65,7 +67,7 @@ export const sketch = (p: p5) => {
 
       obj.t = 0;
       obj.x = p.lerp(obj.x, p.width / 2, 0.05);
-      obj.y = p.lerp(obj.y, p.map(index, 0, totalLength, p.height / 5, p.height * 4 / 5), 0.05);
+      obj.y = p.lerp(obj.y, p.map(index, 0, totalLength, p.height / 6, p.height * 5 / 6), 0.05);
       p.text(obj.letter, obj.x, obj.y);
 
     });
