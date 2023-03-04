@@ -3,6 +3,12 @@ body{
   margin: 0;
   overflow: hidden;
 }
+p{
+  margin: 0;
+}
+li{
+  list-style: none;
+}
 
 canvas{
   background-image:
@@ -16,8 +22,16 @@ canvas{
 .cite{
   position: fixed;
   right: 0;
-  bottom: 10px;
+  bottom: 0;
   display: flex;
+  &_list{
+    margin: 0;
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    height: 100%;
+  }
   &_btn{
     writing-mode: vertical-rl;
     width: 30px;
@@ -32,6 +46,26 @@ canvas{
     &:before{
       content: "";
       position: absolute;
+      top: 50%;
+      left: -20px;
+      display: block;
+      width: 20px;
+      height: 40px;
+      border-radius: 4px 0 0 4px;
+      background-color: #ccc;
+      transform: translateY(-50%);
     }
+    &:after{
+      content: "＜";
+      position: absolute;
+      top: 50%;
+      left: -15px;
+      display: block;
+      transform: translateY(-50%);
+    }
+  }
+  &_note{
+    font-size: 12px;
+    text-indent: 1rem;
   }
 }
