@@ -13,7 +13,7 @@ export const sketch = (p: p5) => {
     t: number
   }
 
-  let t = 1;
+  let t = 240;
   let interval = 360;
   let textSize = 24;
   let myFont: p5.Font;
@@ -66,7 +66,7 @@ export const sketch = (p: p5) => {
       let totalLength = filteredCollectedArray.length;
 
       obj.t = 0;
-      obj.x = p.lerp(obj.x, p.width / 2, 0.05);
+      obj.x = p.lerp(obj.x, p.width / 2 - textSize / 2, 0.05);
       obj.y = p.lerp(obj.y, p.map(index, 0, totalLength, p.height / 6, p.height * 5 / 6), 0.05);
       p.text(obj.letter, obj.x, obj.y);
 
