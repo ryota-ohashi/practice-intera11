@@ -59,8 +59,17 @@ export const sketch = (p: p5) => {
 
     // 中央に集める文字の処理
     let filteredCollectedArray = wordArray.filter(obj => obj.order === currentNumber);
+    moveCollected(filteredCollectedArray);
 
-    filteredCollectedArray.forEach(obj => {
+    // 中央に集めない文字の処理
+    let filteredUnCollectedArray = wordArray.filter(obj => obj.order !== currentNumber);
+    moveUnCollected(filteredUnCollectedArray);
+
+  };
+
+  const moveCollected = (filteredCollectedArray: Status[]) => {
+
+    filteredCollectedArray.forEach((obj: Status) => {
 
       let index = obj.wordIndex;
       let totalLength = filteredCollectedArray.length;
@@ -72,10 +81,11 @@ export const sketch = (p: p5) => {
 
     });
 
-    // 中央に集めない文字の処理
-    let filteredUnCollectedArray = wordArray.filter(obj => obj.order !== currentNumber);
+  }
 
-    filteredUnCollectedArray.forEach(obj => {
+  const moveUnCollected = (filteredUnCollectedArray: Status[]) => {
+
+    filteredUnCollectedArray.forEach((obj: Status) => {
 
       if (obj.t < 90) {
         obj.t++;
@@ -89,7 +99,7 @@ export const sketch = (p: p5) => {
 
     });
 
-  };
+  }
 
   const splitWord = (word: string) => {
     return word.split("");
@@ -99,6 +109,7 @@ export const sketch = (p: p5) => {
 
     let positionX;
     const flag = p.random(1);
+
     if (flag > 0.5) {
       positionX = p.random(p.width / 2 - 120);
     }else{
@@ -110,7 +121,6 @@ export const sketch = (p: p5) => {
   const createPositionY = (): number => {
     return p.random(p.height);
   }
-
 
   const init = (letter: string, order: number, wordIndex: number) => {
 
